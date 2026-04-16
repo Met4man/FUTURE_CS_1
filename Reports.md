@@ -67,15 +67,42 @@ Screenshot
 
 # 2. Cross-Site Scripting (XSS)
 
-Description
+### Description
+
 XSS vulnerabilities allow attackers to inject and execute malicious scripts in a user’s browser, leading to session hijacking or data theft.
 
-Payloads Used
-XSS Finding 1: Reflected XSS in name Parameter
-Page: /dvwa/vulnerabilities/xss_r/
-Payload Used: <script>alert('XSS')</script>
-Parameter: name
-Test Performed: Entered payload in the "name" input field and submitted the form.
-Result: A browser alert popped up with the message "XSS". After closing the popup, the page displayed the name as "hello", which confirms that user input was reflected without handling or sanitization.
-Screenshot:
+### Payloads Used
+### XSS Finding 1: Reflected XSS in name Parameter
+- **Page:** /labs/xss.html
+- **Payload Used:** <script>alert('XSS')</script>
+- **Parameter:** name
+- **Test Performed:** Entered payload in the "name" input field and submitted the form.
+- **Result:** A browser alert popped up with the message "XSS". After closing the popup, the page displayed the name as "hello", which confirms that user input was reflected without handling or sanitization.
+- **Screenshot:**
+<img width="1521" height="647" alt="image" src="https://github.com/user-attachments/assets/580653fe-7b24-4d2b-bb39-e27cbf69c5fc" />
+
+<img width="1018" height="460" alt="image" src="https://github.com/user-attachments/assets/c2a70ceb-6621-487d-a902-531909288f7f" />
+
+<img width="1447" height="543" alt="image" src="https://github.com/user-attachments/assets/c1eb8c85-e7e2-4462-9367-e3396a73ac61" />
+
+
+### XSS Finding 2: Reflected XSS via `img` Tag
+
+- **Page:** /lab/xss/search?q=daemon
+- **Payload Used:** `<img src=x onerror=alert(1)>`
+- **Parameter:** name
+- **Description:** Injected a malicious image tag with an invalid source and an `onerror` handler to trigger JavaScript.
+- **Result:**
+    - A pop-up alert box appeared with the message "1" (from the alert).
+    - Once dismissed, the page showed the text "1" alongside a **broken image icon**, meaning the image failed to load, but the script executed, confirming a reflected XSS vulnerability.
+- **Screenshot:** Burpsuite Request capture
+
+<img width="1237" height="426" alt="image" src="https://github.com/user-attachments/assets/1456be65-9626-4918-8ef6-4a3f6cdad4b6" />
+
+- **Screeshot:** Testing script via `img` tag.
+
+<img width="1387" height="517" alt="image" src="https://github.com/user-attachments/assets/0a13be58-2ada-48bf-82e5-e5d282f6d44c" />
+
+
+
 
