@@ -1,7 +1,7 @@
 # Content Map
 ---
 - [1. IDOR - Using BurpSuite](#1-IDOR-using-BurpSuite)
-- [2.Cross-Site Scripting (XSS)](#2.-Cross-Site-Scripting-(XSS))
+- [2.Cross-Site Scripting (XSS)](#2-Cross-Site-Scripting-(XSS))
 
 # 1. IDOR using BurpSuite
 
